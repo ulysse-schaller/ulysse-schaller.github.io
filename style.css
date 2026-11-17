@@ -1,0 +1,355 @@
+/* ------------------------------------------------------------------
+   Ulysse Schaller: personal site
+   Font: Roboto (SIL OFL 1.1, see assets/fonts/OFL.txt), self-hosted
+   so the page makes no third-party requests.
+   ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("assets/fonts/roboto-latin-wght-normal.woff2") format("woff2");
+}
+
+:root {
+  --bg: #fcfcfd;
+  --heading: #16181c;
+  --text: #33363c;
+  --muted: #6b7079;
+  --rule: #e4e6ea;
+  --card: #ffffff;
+  --chip: #f0f1f3;
+  --accent: #8c3a2b;                       /* burgundy-brown, from the photo */
+  --accent-tint: rgba(140, 58, 43, 0.08);
+  --accent-ink: #ffffff;                   /* text on solid accent */
+  --body-weight: 350;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121416;
+    --heading: #f1f2f4;
+    --text: #c9ccd2;
+    --muted: #8e939b;
+    --rule: #2a2d32;
+    --card: #181a1d;
+    --chip: #202327;
+    --accent: #eea38e;
+    --accent-tint: rgba(238, 163, 142, 0.1);
+    --accent-ink: #1a1012;
+    --body-weight: 300;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: var(--body-weight);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 5.5rem 1.5rem 3rem;
+}
+
+/* ---------- Intro: text left, portrait right ---------- */
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+h1 {
+  margin: 0 0 1.75rem;
+  color: var(--heading);
+  font-size: 2.9rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 4px;
+  margin-top: 1.25rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.about p {
+  margin: 0 0 1em;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.about a {
+  -webkit-hyphens: manual;
+  hyphens: manual;                 /* never split a link across lines with a hyphen */
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
+.portrait {
+  margin-top: 0.4rem;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+
+/* ---------- Links ---------- */
+
+a {
+  color: var(--accent);
+  font-weight: 450;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: color 0.15s ease, background-color 0.15s ease,
+    text-decoration-color 0.15s ease, transform 0.15s ease;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Projects ---------- */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 4.5rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem 1.4rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.project h3 {
+  margin: 0 0 0.85rem;
+  color: var(--heading);
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: nowrap;               /* all links of a project on one line */
+  gap: 0.5rem;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.3em 0.75em;
+  border-radius: 8px;
+  background: var(--accent-tint);
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.project-links a::after {
+  content: "↗";
+  font-size: 0.9em;
+  opacity: 0.75;
+}
+
+.project-links a:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 4.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.updated {
+  margin: 1.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-align: right;
+  opacity: 0.8;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--chip);
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+  transform: translateY(-2px);
+}
+
+.icon-btn svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+
+.icon-btn svg.compass {
+  width: 25px;
+  height: 25px;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16.5px;
+  }
+
+  .page {
+    padding: 2.75rem 1rem 2.5rem;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .portrait {
+    order: -1;
+    width: 168px;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 2.35rem;
+  }
+
+  .section-title {
+    margin-top: 3.25rem;
+  }
+
+  .project {
+    padding: 1.15rem 1rem 1.1rem;
+  }
+
+  .project-links {
+    gap: 0.4rem;
+  }
+
+  .project-links a {
+    padding: 0.28em 0.55em;
+    font-size: 0.78rem;
+  }
+}
+
+/* very narrow phones: shrink the link buttons so they stay on one line */
+@media (max-width: 400px) {
+  .project {
+    padding-inline: 0.85rem;
+  }
+
+  .project-links {
+    gap: 0.3rem;
+  }
+
+  .project-links a {
+    gap: 0.25em;
+    padding: 0.28em 0.45em;
+    font-size: clamp(0.62rem, 3.3vw, 0.76rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+
+  .icon-btn:hover {
+    transform: none;
+  }
+}
